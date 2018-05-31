@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -55,6 +57,11 @@ public class Cliente implements Serializable {
 
 	@Embedded
 	private Endereco endereco;
+	
+	@PrePersist @PreUpdate
+	private void prePersistPreUpdate() {
+		this.cpfOuCnpj = TipoPessoa.removerFormatacao(this.cpfOuCnpj);
+	}
 
 	public Long getCodigo() {
 		return codigo;
@@ -112,6 +119,10 @@ public class Cliente implements Serializable {
 		this.endereco = endereco;
 	}
 
+	public String getCpfOuCnpjSemFormatacao() {
+		return TipoPessoa.removerFormatacao(this.cpfOuCnpj);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
