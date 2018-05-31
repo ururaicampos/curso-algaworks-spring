@@ -1,6 +1,7 @@
 package com.algaworks.brewer.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 
@@ -23,6 +24,7 @@ import com.algaworks.brewer.repository.Cervejas;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
+@ComponentScan(basePackageClasses = Cervejas.class)
 @EnableJpaRepositories(basePackageClasses = Cervejas.class, enableDefaultTransactions = false)
 @EnableTransactionManagement
 public class JPAConfig {

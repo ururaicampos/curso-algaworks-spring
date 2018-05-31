@@ -68,6 +68,7 @@ public class CervejasController {
 		PageWrapper<Cerveja> paginaWrapper = new PageWrapper<>(cervejas.filtrar(cervejaFilter, pageable)
 				, httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
+		//mv.addObject("cervejas", cervejas.findAll());
 		return mv;
 	}
 	
