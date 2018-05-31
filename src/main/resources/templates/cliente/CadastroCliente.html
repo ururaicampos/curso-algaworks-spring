@@ -3,6 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:brewer="http://brewer.algaworks.com"
 	layout:decorate="~{layout/LayoutPadrao}">
 
 <head>
@@ -21,6 +22,8 @@
 
 	<div class="container-fluid">
 		<form method="POST" th:object="${cliente}" th:action="@{/clientes/novo}">
+			<brewer:message/>
+			
 			<div class="row">
 				<div class="form-group  col-sm-12  bw-required" brewer:classforerror="nome">
 					<label for="nome" class="control-label">Nome</label>
@@ -35,7 +38,7 @@
 						<th:block th:each="tipoPessoa : ${tiposPessoa}">
 							<div class="radio  radio-inline">
 								<input type="radio" th:id="|id_${tipoPessoa}|" class="js-radio-tipo-pessoa" 
-									th:field="*{tipoPessoa}" th:value="${tipoPessoa}"
+									th:field="*{tipoPessoa}" th:value="${tipoPessoa}" 
 									th:attr="data-documento=${tipoPessoa.documento},data-mascara=${tipoPessoa.mascara}"> 
 								<label class="control-label" th:for="|id_${tipoPessoa}|" th:text="${tipoPessoa.descricao}">Física</label>
 							</div>
@@ -45,7 +48,7 @@
 				
 				<div class="form-group  col-sm-8  bw-required" brewer:classforerror="cpfOuCnpj">
 					<label for="cpfOuCnpj" class="control-label">CPF/CNPJ</label>
-					<input type="text" class="form-control" id="cpfOuCnpj" th:field="*{cpfOuCpnj}" disabled/>
+					<input type="text" class="form-control" id="cpfOuCnpj" th:field="*{cpfOuCnpj}" disabled/>
 				</div>
 			</div>
 			
@@ -55,7 +58,7 @@
 					<input type="text" class="form-control  js-phone-number" id="telefone" th:field="*{telefone}"/>
 				</div>
 				
-				<div class="form-group  col-sm-8">
+				<div class="form-group  col-sm-8" brewer:classforerror="email">
 					<label for="email" class="control-label">E-mail</label>
 					<input type="text" class="form-control" id="email" th:field="*{email}"/>
 				</div>
@@ -81,7 +84,7 @@
 			<div class="row">
 				<div class="form-group  col-sm-4">
 					<label for="cep">CEP</label>
-					<input type="text" class="form-control  js-cep" id="cep"th:field="*{endereco.cep}"/>
+					<input type="text" class="form-control  js-cep" id="cep" th:field="*{endereco.cep}"/>
 				</div>
 				
 				<div class="form-group  col-sm-4">
@@ -95,7 +98,6 @@
 				<div class="form-group  col-sm-4">
 					<label  for="cidade">Cidade</label>
 					<div class="bw-field-action">
-						<!-- <select id="cidade" class="form-control" data:url="@{/cidades}"> -->
 						<input type="hidden" id="inputHiddenCidadeSelecionada" th:value="*{endereco.cidade} != null ? *{endereco.cidade.codigo}"/>
 						<select id="cidade" class="form-control" th:attr="data-url=@{/cidades}" th:field="*{endereco.cidade}">
 						</select>
