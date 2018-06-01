@@ -24,4 +24,5 @@ public class PaginacaoUtil {
 			criteria.addOrder(order.isAscending() ? Order.asc(property) : Order.desc(property));
 		}
 	}
+	
 }
