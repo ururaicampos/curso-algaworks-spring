@@ -22,7 +22,7 @@
 		<!-- PostgreSQL -->
 		<postgres-connector-java.version>9.4.1212.jre7</postgres-connector-java.version>
 
-		<!-- Spring MVC -->
+		<!-- Spring MVC  -->
 		<spring-framework.version>5.0.2.RELEASE</spring-framework.version>
 
 		<!-- Servlet API -->
@@ -57,6 +57,12 @@
 		<!-- Thymeleaf extras data attribute -->
 		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
 
+		<!-- Cache - Guava -->
+		<guava.version>19.0</guava.version>
+
+		<!-- Spring Context Support -->
+		<spring-context-support.version>4.0.0.RELEASE</spring-context-support.version>
+		
 		<!-- Apache Bean Utils -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 
@@ -305,12 +311,20 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- Spring Context Support -->
+		<!-- Cache - Guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Spring Context Support 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<scope>compile</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- Apache Bean Utils -->
 		<dependency>
@@ -352,10 +366,10 @@
 
 		<!-- Java Mail -->
 		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>${javax.mail.version}</version>
-			<scope>compile</scope>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+            <scope>compile</scope>
 		</dependency>
 
 		<!-- AWS SDK - S3 -->
