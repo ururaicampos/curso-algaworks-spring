@@ -33,7 +33,7 @@ public class CidadesImpl implements CidadesQueries {
 	public Page<Cidade> filtrar(CidadeFilter filtro, Pageable pageable) {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Cidade.class);
 		
-		paginacaoUtil.preparar(criteria, pageable);
+		//paginacaoUtil.preparar(criteria, pageable);
 		adicionarFiltro(filtro, criteria);
 		criteria.createAlias("estado", "e");
 				

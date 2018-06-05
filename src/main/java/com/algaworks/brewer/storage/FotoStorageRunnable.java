@@ -11,13 +11,11 @@ public class FotoStorageRunnable implements Runnable {
 	private DeferredResult<FotoDTO> resultado;
 	private FotoStorage fotoStorage;
 	
-	
 	public FotoStorageRunnable(MultipartFile[] files, DeferredResult<FotoDTO> resultado, FotoStorage fotoStorage) {
 		this.files = files;
 		this.resultado = resultado;
 		this.fotoStorage = fotoStorage;
 	}
-
 
 	@Override
 	public void run() {

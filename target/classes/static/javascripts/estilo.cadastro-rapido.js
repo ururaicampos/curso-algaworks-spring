@@ -36,7 +36,8 @@ Brewer.EstiloCadastroRapido = (function() {
 			contentType: 'application/json',
 			data: JSON.stringify({ nome: nomeEstilo }),
 			error: onErroSalvandoEstilo.bind(this),
-			success: onEstiloSalvo.bind(this)
+			success: onEstiloSalvo.bind(this),
+			beforeSend: adicionarCsrfToken
 		});
 	}
 	
@@ -52,6 +53,12 @@ Brewer.EstiloCadastroRapido = (function() {
 		comboEstilo.append('<option value=' + estilo.codigo + '>' + estilo.nome + '</option>');
 		comboEstilo.val(estilo.codigo);
 		this.modal.modal('hide');
+	}
+	
+	function adicionarCsrfToken(xhr){
+		var token = $('input[name=_csrf]').val();
+		var header = $('input[name=_csrf_header]').val();
+		xhr.setRequestHeader(header, token);
 	}
 	
 	return EstiloCadastroRapido;
